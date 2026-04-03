@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 智能计调流转实时监控大屏</title>
+    <link rel="stylesheet" href="/front/agentFlow.css">
+    <style>
+        /* 隐藏企微主对话框和LangGraph思考执行链 */
+        .chat-panel, .thinking-panel {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部标题 -->
+    <div class="header">
+        <h1>🤖 AI 智能计调流转实时监控大屏</h1>
+        <div class="header-actions">
+            <button class="btn btn-primary" id="startBtn">▶ 模拟下单</button>
+            <button class="btn btn-secondary" id="clearBtn">清空</button>
+            <span class="connection-status" id="wsStatus">● 连接中...</span>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- 资源派发网络拓扑 -->
+        <div class="panel dispatch-panel">
+            <div class="panel-title">
+                <span>🌐 AI资源协同网络</span>
+                <span class="badge" id="robotCount">1 个机器人活跃</span>
+            </div>
+            <div class="network-container" id="network-box">
+                <svg id="networkSvg" class="network-svg">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#00b4d8"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <div class="network-nodes" id="networkNodes"></div>
+            </div>
+            <div class="dispatch-log" id="dispatchLog"></div>
+        </div>
+    </div>
+
+    <!-- 机器人交互动画层 -->
+    <div class="interaction-overlay" id="interactionOverlay"></div>
+
+    <!-- 引入前端脚本 -->
+    <script src="/front/agentFlow.js"></script>
+</body>
+</html>
